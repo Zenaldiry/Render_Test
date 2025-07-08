@@ -3,7 +3,12 @@ const app = express();
 const cors = require('cors');
 const morgan = require('morgan');
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+  })
+);
+
 let persons = [
   {
     id: '1',
@@ -74,7 +79,7 @@ app.post('/api/persons', (req, res) => {
     res.send(newPerson);
   }
 });
-
-app.listen(3001, () => {
-  console.log(`listening to port 3001`);
+const PORT = 3001 || process.env.PORT;
+app.listen(PORT, () => {
+  console.log(`listening to port ${PORT}`);
 });
