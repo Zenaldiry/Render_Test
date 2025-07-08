@@ -4,7 +4,7 @@ app.use(express.static('./dist'));
 const cors = require('cors');
 const morgan = require('morgan');
 app.use(express.json());
-app.use(cors());
+app.use(cors({}));
 
 let persons = [
   {
